@@ -49,6 +49,8 @@ Return in the following JSON format:
         "back", str
     },...]
 }
+
+Also, only generate 10 flashcards
 `
 
 export async function POST(req: NextRequest){
