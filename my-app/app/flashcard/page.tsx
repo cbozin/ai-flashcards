@@ -2,10 +2,10 @@
 
 import { useUser } from "@clerk/nextjs"
 import { useEffect, useState } from "react"
-import { collection, doc, getDoc, setDoc, getDocs } from "firebase/firestore"
+import { collection, doc, getDocs } from "firebase/firestore"
 import { db } from "@/firebase"
 import { useSearchParams } from "next/navigation"
-import { Box, Button, Card, CardActionArea, CardContent, Container, Grid, Typography } from "@mui/material"
+import { Box, Card, CardActionArea, CardContent, Container, Grid, Typography } from "@mui/material"
 
 
 export default function Flashcard() {

@@ -64,7 +64,7 @@ export default function Generate() {
                 batch.set(userDocRef, { flashcards: collections }, { merge: true })
             }
         } else {
-            batch.set(userDocRef, { flashcards: [{ name }] })
+            batch.set(userDocRef, { flashcards: [{name}] })
         }
 
         const colRef = collection(userDocRef, name)

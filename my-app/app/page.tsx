@@ -1,4 +1,4 @@
-import Image from "next/image";
+"use client"
 import getStripe from "@/utils/get-stripe"
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { AppBar, Container, Toolbar, Typography, Button, Box, Grid } from "@mui/material";
@@ -15,14 +15,15 @@ export default function Home() {
     })
 
     const checkoutSessionJson = await checkoutSession.json()
-    if(checkoutSession.statusCode === 500) {
-      console.error(checkoutSession.message)
+    if(checkoutSession.status === 500) {
+      console.error(checkoutSession.statusText);
       return
     }
 
     const stripe = await getStripe()
-    const {error} = await stripe?.redirectToCheckout({
+    const {error} = await stripe!.redirectToCheckout({
       sessionId: checkoutSessionJson.id
+      
     })
 
     if(error) {
@@ -51,7 +52,7 @@ export default function Home() {
       <Box sx={{ textAlign: "center", my: 2 }}>
         <Typography variant="h2" gutterBottom>Welcome to flashcard SaaS</Typography>
         <Typography variant="h5">The easiest way to make flashcards from text</Typography>
-        <Button variant="contained" color="primary" sx={{ mt: 2 }}>Get Started</Button>
+        <Button variant="contained" color="primary" sx={{ mt: 2 }} href="/generate">Get Started</Button>
       </Box>
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component={"h2"} gutterBottom>Features</Typography>
@@ -78,7 +79,7 @@ export default function Home() {
               <Typography variant="h5">Basic</Typography>
               <Typography variant="h6">$5 a month</Typography>
               <Typography>{' '} Access to basic features and limited storage</Typography>
-              <Button variant="contained" color="primary" sx={{ mt: 2 }}>Choose Basic</Button>
+              <Button variant="contained" color="primary" sx={{ mt: 2 }} onClick={handleSubmit}>Choose Basic</Button>
             </Box>
             </Grid>
             <Grid item xs={12} md={6}>

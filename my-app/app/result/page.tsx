@@ -1,9 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
-import { useRouter } from "next/router"
-import getStripe from "@/utils/get-stripe"
+import { useRouter } from "next/navigation"
 import { useSearchParams } from "next/navigation"
-import { isNull } from "util"
 import { Box, CircularProgress, Container, Typography } from "@mui/material"
 
 const ResultPage = () => {
