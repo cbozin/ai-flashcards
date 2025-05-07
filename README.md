@@ -21,7 +21,7 @@
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18 or higher)
-- npm or yarn
+- npm
 
 ### Installation
 
